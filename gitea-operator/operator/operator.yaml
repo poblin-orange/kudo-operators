@@ -43,3 +43,13 @@ plans:
             tasks:
               - storage
               - app
+  cleanup:
+    strategy: serial
+    phases:
+      - name: main-cleanup
+        strategy: parallel
+        steps:
+          - name: clean-up-everything
+            tasks:
+              - remove
+
