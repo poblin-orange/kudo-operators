@@ -1,3 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: giteaclaim
+spec:
+  storageClassName: "openebs-hostpath"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -26,7 +38,6 @@ spec:
         - mountPath: /data
           name: git-data
       volumes:
-      - name: git-data
-        hostPath:
-          path: /mnt/kube-data/gitea
-          type: Directory
+        - name: gitea-persistent-storage
+          persistentVolumeClaim:
+            claimName: giteaclaim
