@@ -18,6 +18,15 @@ tasks:
     spec:
       resources:
         - deployment-gitea.yaml
+
+  - name: service
+    kind: Toggle
+    spec:
+      parameter: enable-k8s-service
+      resources:
+        - service-gitea.yaml
+
+
   - name: remove
     kind: Delete
     spec:

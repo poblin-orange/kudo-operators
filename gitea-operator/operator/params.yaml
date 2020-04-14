@@ -6,4 +6,7 @@ parameters:
   - name: instanceId
     description: instanceId of the gitea to create.
     default: gitea-id
+  - name: enable-k8s-service
+    description: toggle to expose gitea as a k8s services
+    default: true
 
