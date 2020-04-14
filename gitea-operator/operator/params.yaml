@@ -1,0 +1,9 @@
+apiVersion: kudo.dev/v1beta1
+parameters:
+  - name: replicas
+    description: Number of replicas that should be run as part of the deployment
+    default: 2
+  - name: instanceId
+    description: instanceId of the gitea to create.
+    default: gitea-id
+

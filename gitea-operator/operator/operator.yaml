@@ -1,0 +1,30 @@
+apiVersion: kudo.dev/v1beta1
+name: "gitea-operator"
+operatorVersion: "0.1.0"
+appVersion: "1.7.9"
+kubernetesVersion: 1.15.0
+maintainers:
+  - name: Pierre Oblin
+    email: pierre.oblin@orange.com
+url: https://kudo.dev
+tasks:
+  - name: app
+    kind: Apply
+    spec:
+      resources:
+        - deployment-gitea.yaml
+  - name: remove
+    kind: Delete
+    spec:
+      resources:
+        - deployment-gitea.yaml
+plans:
+  deploy:
+    strategy: serial
+    phases:
+      - name: main
+        strategy: parallel
+        steps:
+          - name: everything
+            tasks:
+              - app

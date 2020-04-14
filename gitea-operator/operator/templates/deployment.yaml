@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitea-deployment
+spec:
+  selector:
+    matchLabels:
+      app: gitea
+  replicas: {{ .Params.replicas }} # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: gitea 
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:{{ .AppVersion }}
+          ports:
+            - containerPort: 80
