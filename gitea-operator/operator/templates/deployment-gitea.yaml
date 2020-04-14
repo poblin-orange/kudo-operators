@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: giteaclaim
 spec:
-  storageClassName: "openebs-hostpath"
+  storageClassName: "openebs-cstor-sparse"
   accessModes:
     - ReadWriteOnce
   resources:
