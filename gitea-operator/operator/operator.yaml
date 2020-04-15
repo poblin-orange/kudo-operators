@@ -43,6 +43,7 @@ plans:
             tasks:
               - storage
               - app
+              - service
   cleanup:
     strategy: serial
     phases:
