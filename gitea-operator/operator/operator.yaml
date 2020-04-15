@@ -1,6 +1,6 @@
 apiVersion: kudo.dev/v1beta1
 name: "gitea-operator"
-operatorVersion: "0.1.3"
+operatorVersion: "0.1.4"
 appVersion: "1.7.9"
 kubernetesVersion: 1.15.0
 maintainers:
