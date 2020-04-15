@@ -1,7 +1,9 @@
 kind: Service
 apiVersion: v1
+
 metadata:
   name: gitea-service
+  namespace: {{ .Params.instanceId }}
 spec:
   selector:
     app: gitea

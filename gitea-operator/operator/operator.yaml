@@ -26,12 +26,11 @@ tasks:
       resources:
         - service-gitea.yaml
 
-
   - name: remove
     kind: Delete
     spec:
       resources:
-        - deployment-gitea.yaml
+        - namespace-gitea.yaml
 plans:
   deploy:
     strategy: serial
@@ -39,10 +38,16 @@ plans:
       - name: main
         strategy: parallel
         steps:
-          - name: everything
+          - name: 00-namespace
+            tasks:
+              - storage
+          - name: 01-deployment
             tasks:
               - storage
               - app
+              - service
+          - name: 02-ingress
+            tasks:
               - service
   cleanup:
     strategy: serial
