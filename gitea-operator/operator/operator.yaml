@@ -1,7 +1,7 @@
 apiVersion: kudo.dev/v1beta1
 name: "gitea-operator"
-operatorVersion: "0.1.4"
-appVersion: "1.7.9"
+operatorVersion: "0.1.10"
+appVersion: "1.11.4"
 kubernetesVersion: 1.15.0
 maintainers:
   - name: Pierre Oblin
@@ -29,8 +29,9 @@ tasks:
   - name: remove
     kind: Delete
     spec:
-      resources:
-        - namespace-gitea.yaml
+      resources: []
+
+
 plans:
   deploy:
     strategy: serial
@@ -38,14 +39,10 @@ plans:
       - name: main
         strategy: parallel
         steps:
-          - name: 00-namespace
-            tasks:
-              - storage
           - name: 01-deployment
             tasks:
               - storage
               - app
-              - service
           - name: 02-ingress
             tasks:
               - service

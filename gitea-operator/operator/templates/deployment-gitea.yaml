@@ -3,7 +3,6 @@ kind: Deployment
 
 metadata:
   name: gitea-deployment
-  namespace: {{ .Params.instanceId }}
   labels:
     app: gitea
 spec:
@@ -18,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gitea
-        image: gitea/gitea:latest
+        image: gitea/gitea:{{ .AppVersion }}
         ports:
         - containerPort: 3000
           name: gitea
